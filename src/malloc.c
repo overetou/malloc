@@ -6,7 +6,7 @@
 /*   By: overetou <overetou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 11:21:15 by overetou          #+#    #+#             */
-/*   Updated: 2019/10/07 18:09:46 by overetou         ###   ########.fr       */
+/*   Updated: 2019/10/10 17:41:54 by overetou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,12 @@ void	*calloc(size_t nmemb, size_t size)
 
 	if (ULONG_MAX / size < nmemb)
 		return (NULL);
-	size = nmemb * size;
+	size = align_size(nmemb * size);
+	if (size == 0)
+		size = 1;
 	ptr = malloc(size);
 	if (ptr == NULL)
 		return (NULL);
-	size = align_size(size);
 	s = (char*)ptr;
 	i = 0;
 	while (i != size)
