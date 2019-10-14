@@ -6,7 +6,7 @@
 /*   By: overetou <overetou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 11:21:15 by overetou          #+#    #+#             */
-/*   Updated: 2019/10/10 17:41:54 by overetou         ###   ########.fr       */
+/*   Updated: 2019/10/14 16:35:18 by overetou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,6 @@ void	*malloc(size_t size)
 	if (size == 0)
 		return (NULL);
 	ptr = g_mmeta.smart_alloc(get_zone_type(size), size);
-	if ((size_t)ptr % (size_t)16)
-	{
-		putstr("memory not aligned.\n");
-		return (NULL);
-	}
 	return (ptr);
 }
 
